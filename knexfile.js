@@ -3,7 +3,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/tracker.db3'
+      filename: './data/nutrition_tracker.db3'
     },
     useNullAsDefault: true,
     migrations: {
@@ -38,36 +38,20 @@ module.exports = {
     },
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'nutrition_tracker',
-      user:     'RecolitusMorbus',
-      password: 'N01anrad'
-    },
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL + '?ssl=true',
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: './data/migrations'
+    },
+    seeds: {
+      directory: './data/seeds'
     }
   },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'nutrition_tracker',
-      user:     'RecolitusMorbus',
-      password: 'N01anrad'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
 
 };
