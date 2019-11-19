@@ -10,13 +10,13 @@ _Description placeholder._
 
 _Description placeholder._
 
-### Base Routes
+### Base Route
 
 | Method | Endpoint | Access Control | Description                                   |
 | ------ | -------- | -------------- | --------------------------------------------- |
 | GET    | `/`      | all users      | Sanity check; use to see if server is running |
 
-### Authorization Route
+### Authorization Routes
 
 | Method | Endpoint         | Access Control | Description                                            | Notes                            |
 | ------ | ---------------- | -------------- | ------------------------------------------------------ | -------------------------------- |
@@ -25,9 +25,9 @@ _Description placeholder._
 
 ### User Routes
 
-| Method | Endpoint   | Access Control | Description                                 |
-| ------ | ---------- | -------------- | ------------------------------------------- |
-| GET    | `/r/users` | existing users | Returns all current users                   |
+| Method | Endpoint   | Access Control | Description               |
+| ------ | ---------- | -------------- | ------------------------- |
+| GET    | `/r/users` | existing users | Returns all current users |
 
 ## Data Model
 
@@ -64,8 +64,7 @@ Below are the currently implemented data models.
 
 ---
 
-```
-{
+```{
   id: UUID,
   title: STRING [ 'global_admin', 'local_admin' ],
   is_global: BOOLEAN
@@ -76,8 +75,7 @@ Below are the currently implemented data models.
 
 ---
 
-```
-{
+```{
   id: UUID,
   name: STRING
 }
@@ -87,8 +85,7 @@ Below are the currently implemented data models.
 
 ---
 
-```
-{
+```{
   id: UUID,
   name: STRING,
   country_id: UUID foreign key found in COUNTRIES table
@@ -99,8 +96,7 @@ Below are the currently implemented data models.
 
 ---
 
-```
-{
+```{
   id: UUID,
   name: STRING
   gender: STRING,
