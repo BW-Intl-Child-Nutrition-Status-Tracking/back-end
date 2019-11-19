@@ -47,5 +47,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTablIfExists('children')
+  return knex.schema.dropTableIfExists('children')
 };

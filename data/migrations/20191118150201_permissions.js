@@ -19,14 +19,14 @@ exports.up = function(knex) {
         .string('email')
         .notNullable()
         .unique();
-      users
-        .string('country_access')
-        .unsigned()
-        .references('name')
-        .inTable('countries')
-        .onDelete('NO ACTION')
-        .onUpdate('NO ACTION')
-        .notNullable();
+      // users
+      //   .string('country_access')
+      //   .unsigned()
+      //   .references('name')
+      //   .inTable('countries')
+      //   .onDelete('NO ACTION')
+      //   .onUpdate('NO ACTION')
+      //   .notNullable();
     })
     .createTable('users_roles', tbl => {
       tbl.increments();

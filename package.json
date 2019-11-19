@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "server": "nodeman index.js",
+    "server": "nodemon index.js",
     "testing": "cross-env DB_ENV=testing jest --watch"
   },
   "repository": "https://github.com/BW-Intl-Child-Nutrition-Status-Tracking/back-end.git",
