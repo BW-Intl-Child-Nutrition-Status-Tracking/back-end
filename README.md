@@ -8,26 +8,36 @@ _Description placeholder._
 
 ## Endpoints
 
-_Description placeholder._
+Below are the various endpoints used to navigate the server. Click on the link, or right-click and copy the link's location, to obtain the URL.
 
 ### Base Route
 
-| Method | Endpoint | Access Control | Description                                   |
-| ------ | -------- | -------------- | --------------------------------------------- |
-| GET    | `/`      | all users      | Sanity check; use to see if server is running |
+| Method | Endpoint | Access Control | Description                                   | Links     |
+| ------ | -------- | -------------- | --------------------------------------------- | --------- |
+| GET    | `/`      | all users      | Sanity check; use to see if server is running | [Click Me](https://protected-gorge-38517.herokuapp.com/) |
 
 ### Authorization Routes
 
-| Method | Endpoint         | Access Control | Description                                            | Notes                            |
+| Method | Endpoint         | Access Control | Description                                            | Notes                            |  Links     |
 | ------ | ---------------- | -------------- | ------------------------------------------------------ | -------------------------------- |
-| POST   | `/auth/add-user` | global admin   | Create new user; accessible only by global admins      | Open access for frontend testing |
-| POST   | `/auth/login`    | existing users | Credentials checkpoint; only existing users may access |                                  |
+| POST   | `/auth/add-user` | global admin   | Create new user; accessible only by global admins      | Open access for frontend testing | [Click Me](https://protected-gorge-38517.herokuapp.com/auth/add-user) |
+| POST   | `/auth/login`    | existing users | Credentials checkpoint; only existing users may access |                                  | [Click Me](https://protected-gorge-38517.herokuapp.com/auth/login) |
 
 ### User Routes
 
-| Method | Endpoint   | Access Control | Description               |
-| ------ | ---------- | -------------- | ------------------------- |
-| GET    | `/r/users` | existing users | Returns all current users |
+| Method | Endpoint   | Access Control | Description               | Links     |
+| ------ | ---------- | -------------- | ------------------------- | --------- |
+| GET    | `/r/users` | existing users | Returns all current users | [Click Me](https://protected-gorge-38517.herokuapp.com/r/users) |
+
+
+## Dummy Users
+
+| username   | password | first_name | last_name | email                      |
+| ---------- | -------- | ---------- | --------- | -------------------------- |
+| testuser1  | password | Paul       | Atreides  | tabr4ever@sietch.com       |
+| testuser2  | password | Korbin     | Dallas    | christucker@5thelement.com |
+| tester     | password | Firston    | McLasty   | itslasty@futurama.com      |
+| garryyyyyy | password | Gary       | Gary      | garrrygary@futurama.com    |
 
 ## Data Model
 
