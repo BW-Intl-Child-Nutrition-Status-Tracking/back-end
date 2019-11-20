@@ -28,6 +28,16 @@ exports.up = function(knex) {
       //   .onUpdate('NO ACTION')
       //   .notNullable();
     })
+    .createTable('roles', roles => {
+      roles.increments();
+      roles
+        .string('title', 255)
+        .notNullable();
+      roles
+        .boolean('is_global')
+        .notNullable()
+        .defaultTo(false);
+    })
     .createTable('users_roles', tbl => {
       tbl.increments();
       tbl
@@ -46,16 +56,6 @@ exports.up = function(knex) {
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
         .notNullable();
-    })
-    .createTable('roles', roles => {
-      roles.increments();
-      roles
-        .string('title', 255)
-        .notNullable();
-      roles
-        .boolean('is_global')
-        .notNullable()
-        .defaultTo(false);
     })
 };
 
