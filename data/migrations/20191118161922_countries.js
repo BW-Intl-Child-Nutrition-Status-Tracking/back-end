@@ -13,7 +13,7 @@ exports.up = function(knex) {
         .string('name', 255)
         .notNullable();
       comm
-        .integer('country_name')
+        .string('country_name')
         .unsigned()
         .references('name')
         .inTable('countries')
