@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 exports.seed = function(knex) {
   return knex('users')
     .del()
@@ -5,17 +7,19 @@ exports.seed = function(knex) {
       return knex('users').insert([
         {
           username: 'testuser1',
-          password: 'password',
+          password: bcrypt.hashSync('password', 14),
           first_name: 'Paul',
           last_name: 'Atreides',
-          email: 'tabr4ever@sietchmail.com'
+          email: 'tabr4ever@sietchmail.com',
+          is_global: true
         },
         {
           username: 'testuser2',
-          password: 'password',
+          password: bcrypt.hashSync('password', 14),
           first_name: 'Korbin',
           last_name: 'Dallas',
-          email: 'christucker@5thelement.com'
+          email: 'christucker@5thelement.com',
+          is_global: false
         },
       ]);
     });

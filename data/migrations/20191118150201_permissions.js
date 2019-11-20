@@ -19,24 +19,16 @@ exports.up = function(knex) {
         .string('email')
         .notNullable()
         .unique();
-      // users
-      //   .string('country_access')
-      //   .unsigned()
-      //   .references('name')
-      //   .inTable('countries')
-      //   .onDelete('NO ACTION')
-      //   .onUpdate('NO ACTION')
-      //   .notNullable();
+      users
+        .boolean('is_global')
+        .defaultTo(false);
     })
     .createTable('roles', roles => {
       roles.increments();
       roles
         .string('title', 255)
         .notNullable();
-      roles
-        .boolean('is_global')
-        .notNullable()
-        .defaultTo(false);
+      roles.text('desc', 6000);
     })
     .createTable('users_roles', tbl => {
       tbl.increments();
@@ -61,7 +53,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists('roles')
     .dropTableIfExists('users_roles')
+    .dropTableIfExists('roles')
     .dropTableIfExists('users');
 };
