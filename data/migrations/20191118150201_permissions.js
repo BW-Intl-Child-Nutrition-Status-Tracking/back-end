@@ -56,7 +56,7 @@ exports.up = function(knex) {
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
         .notNullable();
-    })
+    });
 };
 
 exports.down = function(knex) {
