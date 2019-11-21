@@ -1,9 +1,10 @@
 const router = require('express').Router();
+const restricted = require('../auth/restricted-middleware.js');
+const checkRole = require('../auth/check-role.js');
 
 const Users = require('../models/user-models.js');
-const restricted = require('../auth/restricted-middleware.js');
 
-router.get('/users', restricted, (req, res) => {
+router.get('/', (req, res) => {
   Users
     .find()
     .then(users => {
@@ -14,18 +15,85 @@ router.get('/users', restricted, (req, res) => {
     });
 });
 
-router.get('/users/:id', restricted, async (req, res) => {
+router.get('/:id', (req, res) => {
   const { id } = req.params;
   
-  try {
-    const user = await Users.findById(id);
-    if(user.id) {
-      res.status(200).json(user);
-    } else if(!user.id) {
-      res.status(404).json({ message: `User could not be found.` });
-    };
-  } catch(err) {
-    res.status(500).json(err);
+  Users
+    .findById(id)
+    .then(users => {
+      const user = users[0];
+
+      if(user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ message: `User could not be found.` });
+      };
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+})
+
+router.put('/:id', restricted, checkRole('global_admin', 'local_admin'), (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  if(
+    user.role === 'global_admin' ||
+    user.id === `${id}`
+  ) { 
+    Users
+      .findById(id)
+      .then(user => {
+        if(user) {
+          Users
+            .update(id, changes)
+            .then(updatedUser => {
+              res.status(201).json(updatedUser);
+            })
+            .catch(err => {
+              res.status(500).json(err);
+            });
+        } else {
+          res.status(404)
+        };
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  } else {
+    res.status(403).json({ message: `User Not Authorized` });
+  };
+});
+
+router.delete('/:id', restricted, checkRole('global_admin', 'local_admin'), (req, res) => {
+  const { id } = req.params;
+
+  if(
+    user.role === 'global_admin' ||
+    user.id === `${id}`
+  ) { 
+    Users
+      .findById(id)
+      .then(user => {
+        if(user) {
+          Users
+            .remove(id)
+            .then(deletedUser => {
+              res.status(200).json(deletedUser);
+            })
+            .catch(err => {
+              res.status(500).json(err);
+            });
+        } else {
+          res.status(404)
+        };
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  } else {
+    res.status(403).json({ message: `User Not Authorized` });
   };
 });
 

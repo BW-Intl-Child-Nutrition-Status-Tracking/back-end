@@ -2,7 +2,6 @@ const db = require('../../data/config/dbConfig.js');
 
 module.exports = {
   find,
-  findBy,
   findById,
   add,
   update,
@@ -10,33 +9,29 @@ module.exports = {
 };
 
 function find() {
-  return db('users').select('id', 'username', 'first_name', 'last_name', 'email');
-};
-
-function findBy(filter) {
-  return db('users').where(filter);
+  return db('communities');
 };
 
 function findById(id) {
-  return db('users')
+  return db('communities')
     .where({ id })
     .first();
 };
 
-async function add(user) {
-  const [id] = await db('users').insert(user);
+async function add(community) {
+  const [id] = await db('communities').insert(community);
 
   return findById(id);
 };
 
 function update(id, changes) {
-  return db('users')
+  return db('communities')
     .where({ id })
     .update(changes, '*');
 };
 
 function remove(id) {
-  return db('users')
+  return db('communities')
     .where({ id })
     .del();
 };
