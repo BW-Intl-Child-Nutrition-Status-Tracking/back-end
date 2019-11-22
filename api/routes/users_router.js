@@ -7,7 +7,6 @@ const req_body = require('../../util/middleware/req_body.js');
 const roles_checker = require('../../util/middleware/roles_checker.js');
 const AuthController = require('../controllers/AuthController.js');
 const UserController = require('../controllers/UserController.js');
-const CountryController = require('../controllers/CountryController.js');
 
 /* DEFINE : ROUTER */
 const router = express.Router({ mergeParams: true });
@@ -25,8 +24,8 @@ router.route('/login')
   .all(req_body(['username', 'password']))
   .post(UserController.login);
 
-/* ROUTERS : GET,POST /users/:id */
-router.route('/:id')
+/* EXPORT : users_routes */
+module.exports = router;
 
 // const router = require('express').Router();
 // const restricted = require('../auth/restricted-middleware.js');
