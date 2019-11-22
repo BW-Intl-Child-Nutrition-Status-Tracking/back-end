@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const restricted = require('../auth/restricted-middleware.js');
-const checkRole = require('../auth/check-role.js');
+const restricted = require('../../util/middleware/restricted-middleware.js/index.js');
+const checkRole = require('../../util/middleware/roles_checker.js/index.js.js');
 
 const Countries = require('../models/country-models.js');
-const Communities = require('../models/community-models.js');
+const Communities = require('../models/Community.js/index.js.js');
 
 router.get('/:name', restricted, checkRole('global_admin', 'local_admin'), (req, res) => {
   const { name } = req.params;
