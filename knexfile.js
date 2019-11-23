@@ -40,7 +40,8 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL + '?ssl=true',
+    debug: true,
+    connection: 'postgres://xgpxerjglleira:202be4ae54c0c01e86b6417e85c74725253e4646ac1cc60ed4bab00c6d8683ba@ec2-23-21-94-99.compute-1.amazonaws.com:5432/dtkvfqpdloabq',
     pool: {
       min: 2,
       max: 10
@@ -51,7 +52,8 @@ module.exports = {
     },
     seeds: {
       directory: './data/seeds'
-    }
+    },
+    ssl: true
   },
 
 };
