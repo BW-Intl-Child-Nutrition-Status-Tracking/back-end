@@ -29,4 +29,5 @@ router.get('/users/:id', restricted, async (req, res) => {
   };
 });
 
+
 module.exports = router;
