@@ -2,7 +2,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('children', tbl => {
     tbl.increments();
     tbl
-      .string('name', 255)
+      .varChar('child_name', 255)
       .notNullable();
     tbl
       .string('gender')
@@ -27,7 +27,7 @@ exports.up = function(knex) {
       .onDelete('NO ACTION')
       .onUpdate('NO ACTION')
       .notNullable();
-    tbl.string('parent_name');
+    tbl.varChar('parent_name', 255);
     tbl.string('res_country');
     tbl.string('res_state');
     tbl.string('res_city');
