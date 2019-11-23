@@ -3,19 +3,19 @@ exports.up = function(knex) {
     .createTable('countries', count => {
       count.increments();
       count
-        .string('name', 255)
+        .string('country_name', 255)
         .notNullable()
         .unique();
     })
     .createTable('communities', comm => {
       comm.increments();
       comm
-        .string('name', 255)
+        .string('community_name', 255)
         .notNullable();
       comm
-        .integer('country_name')
+        .integer('country_id')
         .unsigned()
-        .references('name')
+        .references('id')
         .inTable('countries')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')

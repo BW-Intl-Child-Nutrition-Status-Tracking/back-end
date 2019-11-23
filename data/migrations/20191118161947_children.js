@@ -20,14 +20,6 @@ exports.up = function(knex) {
       .date('screening_date')
       .notNullable();
     tbl
-      .string('screening_country')
-      .unsigned()
-      .references('name')
-      .inTable('countries')
-      .onDelete('NO ACTION')
-      .onUpdate('NO ACTION')
-      .notNullable();
-    tbl
       .integer('community_id')
       .unsigned()
       .references('id')
