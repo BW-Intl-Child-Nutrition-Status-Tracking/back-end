@@ -30,8 +30,7 @@ router.post('/login', (req, res) => {
       if(user && bcrypt.compareSync(password, user.password)) {
         const token = getJwtToken(user.name);
 
-        Users
-          .findById(user.id)
+        Users.findById(user.id)
           .then(() => {
             res.status(200).json(token);
           });
@@ -40,13 +39,16 @@ router.post('/login', (req, res) => {
       };
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
 
-function getJwtToken(username) {
-  const payload = { username };
+function getJwtToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username,
+    roles: ['global_admin', 'local_admin'],
+  };
   const options = {
     expiresIn: '30d'
   };

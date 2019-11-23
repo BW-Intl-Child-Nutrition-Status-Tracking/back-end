@@ -11,7 +11,8 @@ exports.seed = function(knex) {
           first_name: 'Paul',
           last_name: 'Atreides',
           email: 'tabr4ever@sietchmail.com',
-          is_global: true
+          // is_global: true,
+          role: 'global_admin'
         },
         {
           username: 'testuser2',
@@ -19,7 +20,8 @@ exports.seed = function(knex) {
           first_name: 'Korbin',
           last_name: 'Dallas',
           email: 'christucker@5thelement.com',
-          is_global: false
+          // is_global: false,
+          role: 'local_admin'
         },
       ]);
     });

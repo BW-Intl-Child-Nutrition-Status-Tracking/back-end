@@ -1,9 +1,10 @@
 const router = require('express').Router();
 
 const Users = require('../models/user-models.js');
-const restricted = require('../auth/restricted-middleware.js');
+const restricted = require('../auth/middleware/restricted-middleware.js');
+const papers = require('../auth/middleware/papers-please.js');
 
-router.get('/users', restricted, (req, res) => {
+router.get('/users', restricted, papers('global_admin'), (req, res) => {
   Users
     .find()
     .then(users => {

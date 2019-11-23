@@ -17,8 +17,8 @@ exports.up = function(knex) {
         .unsigned()
         .references('id')
         .inTable('countries')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
         .notNullable();
     });
 };
