@@ -2,7 +2,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('children', tbl => {
     tbl.increments();
     tbl
-      .string('name', 255)
+      .varchar('child_name', 255)
       .notNullable();
     tbl
       .string('gender')
@@ -20,14 +20,6 @@ exports.up = function(knex) {
       .date('screening_date')
       .notNullable();
     tbl
-      .string('screening_country')
-      .unsigned()
-      .references('name')
-      .inTable('countries')
-      .onDelete('NO ACTION')
-      .onUpdate('NO ACTION')
-      .notNullable();
-    tbl
       .integer('community_id')
       .unsigned()
       .references('id')
@@ -35,7 +27,7 @@ exports.up = function(knex) {
       .onDelete('NO ACTION')
       .onUpdate('NO ACTION')
       .notNullable();
-    tbl.string('parent_name');
+    tbl.varchar('parent_name', 255);
     tbl.string('res_country');
     tbl.string('res_state');
     tbl.string('res_city');
