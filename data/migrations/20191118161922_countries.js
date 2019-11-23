@@ -1,24 +1,24 @@
 exports.up = function(knex) {
   return knex.schema
-    .createTable('countries', count => {
-      count.increments();
-      count
+    .createTable('countries', tbl => {
+      tbl.increments();
+      tbl
         .string('country_name', 255)
         .notNullable()
         .unique();
     })
-    .createTable('communities', comm => {
-      comm.increments();
-      comm
+    .createTable('communities', tbl => {
+      tbl.increments();
+      tbl
         .string('community_name', 255)
         .notNullable();
-      comm
+      tbl
         .integer('country_id')
         .unsigned()
         .references('id')
         .inTable('countries')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
+        .onDelete('NO ACTION')
+        .onUpdate('NO ACTION')
         .notNullable();
     });
 };
