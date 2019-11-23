@@ -10,18 +10,14 @@ exports.seed = function(knex) {
           password: bcrypt.hashSync('password', 14),
           first_name: 'Paul',
           last_name: 'Atreides',
-          email: 'tabr4ever@sietchmail.com',
-          // is_global: true,
-          role: 'global_admin'
+          email: 'tabr4ever@sietchmail.com'
         },
         {
           username: 'testuser2',
           password: bcrypt.hashSync('password', 14),
           first_name: 'Korbin',
           last_name: 'Dallas',
-          email: 'christucker@5thelement.com',
-          // is_global: false,
-          role: 'local_admin'
+          email: 'christucker@5thelement.com'
         },
       ]);
     });
