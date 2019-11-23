@@ -8,7 +8,7 @@ exports.seed = function(knex) {
           gender: 'Female',
           dob: '2011-05-22',
           weight_kg: 43,
-          heigt_cm: 124,
+          height_cm: 124,
           screening_date: '2019-11-23',
           community_id: 2,
           parent_name: 'Cecep Mouhammad',
